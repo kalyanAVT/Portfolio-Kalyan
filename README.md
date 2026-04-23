@@ -2,7 +2,7 @@
 
 A personal portfolio website built to showcase my work as an ML/AI engineer. Designed with a high-contrast, minimalist aesthetic inspired by [samiksha.online](https://www.samiksha.online/).
 
-> **Live:** _Coming soon — Vercel deployment pending_
+> **Live:** [kalyan-avt.vercel.app](https://kalyan-avt.vercel.app/)
 
 ---
 
