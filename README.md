@@ -1,6 +1,6 @@
 # Kalyan A — Portfolio
 
-A personal portfolio website built to showcase my work as an ML/AI engineer. Designed with a high-contrast, minimalist aesthetic inspired by [samiksha.online](https://www.samiksha.online/).
+A personal portfolio website built to showcase my work as an ML/AI engineer. Designed with a high-contrast, minimalist aesthetic.
 
 > **Live:** _Coming soon — Vercel deployment pending_
 
