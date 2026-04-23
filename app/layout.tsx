@@ -14,7 +14,7 @@ export const metadata: Metadata = {
   openGraph   : {
     title       : "Kalyan A — ML & AI Engineer",
     description : "ML/AI Engineer. Building production AI systems.",
-    images      : ["/og-image.png"],
+    images      : ["/profile.png"],
   },
 };
 

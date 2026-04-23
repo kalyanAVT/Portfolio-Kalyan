@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Image from "next/image";
 import { personal } from "../lib/data";
 import { Mail } from "lucide-react";
 
@@ -31,12 +32,16 @@ export default function Hero() {
           </div>
         </div>
         
-        {/* Avatar Profile Picture */}
-        <div className="w-32 h-32 md:w-40 md:h-40 rounded-full overflow-hidden border border-[var(--border)] shrink-0 bg-gradient-to-br from-neutral-800 to-neutral-900 flex items-center justify-center shadow-xl">
-          {/* Replace with next/image when a real photo is available */}
-          <span className="text-4xl font-bold text-neutral-400 select-none">
-            {personal.initials}
-          </span>
+        {/* Profile Picture */}
+        <div className="w-32 h-32 md:w-40 md:h-40 rounded-full overflow-hidden border-2 border-[var(--border)] shrink-0 shadow-xl">
+          <Image
+            src="/profile.png"
+            alt={personal.name}
+            width={160}
+            height={160}
+            priority
+            className="w-full h-full object-cover"
+          />
         </div>
       </motion.div>
     </section>
