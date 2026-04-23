@@ -35,11 +35,12 @@ export default function Hero() {
         {/* Profile Picture */}
         <div className="w-32 h-32 md:w-40 md:h-40 rounded-2xl overflow-hidden border-2 border-[var(--border)] shrink-0 shadow-xl">
           <Image
-            src="/profile.png"
+            src={personal.profileImage}
             alt={personal.name}
             width={160}
             height={160}
             priority
+            unoptimized
             className="w-full h-full object-cover"
           />
         </div>
