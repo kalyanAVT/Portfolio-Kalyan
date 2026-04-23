@@ -1,19 +1,39 @@
-# Node.js
+# Dependencies
 node_modules/
-npm-debug.log
-yarn-debug.log
-yarn-error.log
-package-lock.json
 
-# Next.js
+# Next.js build output
 .next/
 out/
 
-# VS Code
-.vscode/
+# Environment variables
+.env
+.env.local
+.env.*.local
 
-# Misc
+# TypeScript build info
+tsconfig.tsbuildinfo
+
+# Debug logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# OS files
 .DS_Store
+Thumbs.db
 
+# Editor / IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# AI agent tooling (not part of source)
+.agents/
+.claude/
+
+# Personal / planning docs (not for public repo)
 PORTFOLIO_PLAN.md
+TODO.md
+plan.md
 *.pdf

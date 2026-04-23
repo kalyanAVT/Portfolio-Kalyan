@@ -1,8 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { useState } from "react";
-import { personal } from "../lib/data";
+import { about } from "../lib/data";
 
 export default function About() {
   return (
@@ -17,8 +16,8 @@ export default function About() {
       <h2 className="text-xl font-semibold text-[var(--fg)] mb-6">
         About
       </h2>
-      <p className="text-sm leading-relaxed text-[var(--muted)]">
-        {personal.about}
+      <p className="text-sm leading-relaxed text-[var(--muted)] whitespace-pre-line">
+        {about}
       </p>
     </motion.section>
   );
