@@ -8,7 +8,6 @@ export const personal = {
   linkedin: "https://linkedin.com/in/kalyan01",
   twitter: "https://x.com/MaKuMaru_",
   github: "https://github.com/kalyanAVT",
-  profileImage: "https://drive.google.com/uc?id=1x1kDK5tTaM42XhPU2aOvhjea7LuWhBUw",
 };
 
 export const about = `

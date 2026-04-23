@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import { GeistSans } from "geist/font/sans";
 import { GeistMono } from "geist/font/mono";
 import "./globals.css";
-import { personal } from "../lib/data";
 
 export const metadata: Metadata = {
   metadataBase: new URL(
@@ -15,7 +14,7 @@ export const metadata: Metadata = {
   openGraph   : {
     title       : "Kalyan A — ML & AI Engineer",
     description : "ML/AI Engineer. Building production AI systems.",
-    images      : [personal.profileImage],
+    images      : ["/profile.png"],
   },
 };
 
