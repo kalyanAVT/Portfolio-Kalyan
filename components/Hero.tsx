@@ -33,7 +33,7 @@ export default function Hero() {
         </div>
         
         {/* Profile Picture */}
-        <div className="w-32 h-32 md:w-40 md:h-40 rounded-full overflow-hidden border-2 border-[var(--border)] shrink-0 shadow-xl">
+        <div className="w-32 h-32 md:w-40 md:h-40 rounded-2xl overflow-hidden border-2 border-[var(--border)] shrink-0 shadow-xl">
           <Image
             src="/profile.png"
             alt={personal.name}

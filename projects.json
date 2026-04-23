@@ -5,7 +5,7 @@
     "description": "Built a multi-model inference router combining cloud (SageMaker) and local (Phi-2) backends, with dynamic routing based on query complexity. Fine-tuned BERT for sequence classification on 160K labelled tweets; achieved 93% F1-score with voice input/output via STT/TTS.",
     "tags": ["BERT", "GPT-3.5", "Phi-2", "FLAN-T5", "AWS Lambda", "FastAPI"],
     "links": [
-      { "label": "GitHub", "url": "https://github.com/kalyanAVT" }
+      { "label": "GitHub", "url": "https://github.com/kalyanAVT/Multimodal-Sentiment-Chatbot" }
     ],
     "featured": true,
     "order": 1
@@ -16,7 +16,7 @@
     "description": "Achieved 96% test accuracy on a Grape Leaf Disease 4 Class using transfer learning (CNN backbone) with augmentation and fine-tuning of classification head. Deployed model behind a REST API (FastAPI) with a Streamlit dashboard for real-time image upload and inference.",
     "tags": ["ResNet", "OpenCV", "CNN", "FastAPI", "Streamlit"],
     "links": [
-      { "label": "GitHub", "url": "https://github.com/kalyanAVT" }
+      { "label": "GitHub", "url": "https://github.com/kalyanAVT/Grape-Leaf-Disease-Detection-Using-Cnn" }
     ],
     "featured": true,
     "order": 2
