@@ -1,5 +1,16 @@
 [
   {
+    "id": "insyfy",
+    "title": "InSyfy — Autonomous Research Agent",
+    "description": "Designed and built a multi-agent research system on LangGraph: a planner fans out parallel web search, hybrid retrieval (vector + keyword + cross-encoder reranking) pulls from a persistent Qdrant memory, and synthesis is gated by a citation-enforcement layer that declines claims lacking sufficient evidence rather than hallucinating. Added a self-critique retry loop, real-time SSE progress streaming, and independently diagnosed and fixed concurrency and data-integrity bugs (a blocking event loop, broken event-log pagination, invalid vector-DB IDs) that don't surface in a casual demo.",
+    "tags": ["LangGraph", "RAG", "FastAPI", "Gradio", "Redis", "Qdrant"],
+    "links": [
+      { "label": "GitHub", "url": "https://github.com/kalyanAVT/Insyfy" }
+    ],
+    "featured": true,
+    "order": 1
+  },
+  {
     "id": "sentiment-chatbot",
     "title": "Multimodal Sentiment Chatbot",
     "description": "Built a multi-model inference router combining cloud (SageMaker) and local (Phi-2) backends, with dynamic routing based on query complexity. Fine-tuned BERT for sequence classification on 160K labelled tweets; achieved 93% F1-score with voice input/output via STT/TTS.",
@@ -8,7 +19,7 @@
       { "label": "GitHub", "url": "https://github.com/kalyanAVT/Multimodal-Sentiment-Chatbot" }
     ],
     "featured": true,
-    "order": 1
+    "order": 2
   },
   {
     "id": "crop-disease",
@@ -19,6 +30,6 @@
       { "label": "GitHub", "url": "https://github.com/kalyanAVT/Grape-Leaf-Disease-Detection-Using-Cnn" }
     ],
     "featured": true,
-    "order": 2
+    "order": 3
   }
 ]

@@ -9,10 +9,10 @@ export const metadata: Metadata = {
       ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}`
       : "http://localhost:3000"
   ),
-  title       : "Kalyan A — ML & AI Engineer",
+  title       : "Kalyan Kumar A",
   description : "Portfolio of Kalyan A. ML/AI Engineer specialising in LLMs, MLOps, NLP, and Computer Vision.",
   openGraph   : {
-    title       : "Kalyan A — ML & AI Engineer",
+    title       : "Kalyan Kumar A",
     description : "ML/AI Engineer. Building production AI systems.",
     images      : ["/profile.png"],
   },

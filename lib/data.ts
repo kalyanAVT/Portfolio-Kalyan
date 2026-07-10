@@ -32,8 +32,10 @@ export const experiences = [
 export const skills = [
   "Python", "C/C++", "PyTorch", "Scikit-learn", "HuggingFace Transformers",
   "OpenCV", "NLTK", "PEFT", "LoRA", "QLoRA", "Prompt Engineering",
-  "LangChain", "AWS", "Docker", "GitHub Actions", "Weights & Biases",
-  "FastAPI", "Streamlit", "REST APIs", "Pandas", "NumPy", "MySQL", "MongoDB"
+  "LangChain", "LangGraph", "Multi-Agent Systems", "Retrieval-Augmented Generation (RAG)",
+  "Vector Databases (Qdrant)", "AWS", "Docker", "GitHub Actions", "Weights & Biases",
+  "FastAPI", "Async Python", "Server-Sent Events", "Streamlit", "REST APIs",
+  "Pandas", "NumPy", "MySQL", "MongoDB", "Redis"
 ];
 
 export const hackathons = [
@@ -53,8 +55,8 @@ export const hackathons = [
 
 export const education = [
   {
-    institution: "Jawaharlal Nehru Technological University (JNTUH)",
-    degree: "B.Tech — Computer Science Engineering (AI & ML)",
+    institution: "[MRCE] - Affiliated to Jawaharlal Nehru Technological University (JNTUH)",
+    degree: "B.Tech — Computer Science and Engineering (AI & ML)",
     period: "Nov 2021 – Oct 2025",
     url: "https://jntuh.ac.in/",
   },

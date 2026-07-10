@@ -31,6 +31,7 @@ Thumbs.db
 # AI agent tooling (not part of source)
 .agents/
 .claude/
+.gitnexus
 
 # Personal / planning docs (not for public repo)
 PORTFOLIO_PLAN.md
