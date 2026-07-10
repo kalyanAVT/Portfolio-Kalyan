@@ -2,7 +2,7 @@ export const personal = {
   name: "Kalyan A",
   firstName: "Kalyan",
   initials: "KA",
-  tagline: "Machine Learning Engineer | LLM · MLOps · NLP · Computer Vision",
+  tagline: "AI/ML Engineer | LLM · MLOps · NLP · AI agents",
   status: "Open to new opportunities",
   email: "allulakalyankumar@gmail.com",
   linkedin: "https://linkedin.com/in/kalyan01",
@@ -11,7 +11,7 @@ export const personal = {
 };
 
 export const about = `
-  Results-driven ML Engineer with production experience across the full model lifecycle — data ingestion, fine-tuning, evaluation, and cloud deployment. Adept at parameter-efficient training (LoRA/QLoRA), scalable MLOps pipelines, and cross-functional team delivery. Seeking remote roles building impactful AI systems.
+  AI/ML Engineer who ships across the stack — fine-tuning (LoRA/QLoRA) and deployment on one end, multi-agent LLM systems (LangGraph, RAG, retrieval pipelines) on the other. Open to remote roles building AI systems that hold up past the demo.
 `;
 
 export const experiences = [
@@ -30,12 +30,12 @@ export const experiences = [
 ];
 
 export const skills = [
-  "Python", "C/C++", "PyTorch", "Scikit-learn", "HuggingFace Transformers",
-  "OpenCV", "NLTK", "PEFT", "LoRA", "QLoRA", "Prompt Engineering",
+  "Python", "PyTorch", "Scikit-learn", "HuggingFace Transformers",
+  "LoRA", "QLoRA", "Prompt Engineering",
   "LangChain", "LangGraph", "Multi-Agent Systems", "Retrieval-Augmented Generation (RAG)",
   "Vector Databases (Qdrant)", "AWS", "Docker", "GitHub Actions", "Weights & Biases",
   "FastAPI", "Async Python", "Server-Sent Events", "Streamlit", "REST APIs",
-  "Pandas", "NumPy", "MySQL", "MongoDB", "Redis"
+  "Pandas", "NumPy", "MySQL", "Redis"
 ];
 
 export const hackathons = [
