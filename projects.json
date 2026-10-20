@@ -1,35 +1,62 @@
 [
   {
+    "id": "agentic-rag",
+    "title": "Agentic RAG Assistant for Live GitHub Repositories",
+    "category": "AGENTIC AI · LIVE GITHUB DATA",
+    "description": "Agentic RAG assistant that answers multi-hop questions about live GitHub repositories with cited answers, cross-session memory, and full execution tracing.",
+    "tags": ["Python", "FastAPI", "OpenAI API", "RAG", "SQLite", "Docker"],
+    "techStack": ["Python", "FastAPI", "Pydantic", "OpenAI API", "LLM Tool Calling", "Retrieval-Augmented Generation (RAG)", "SQLite", "GitHub REST API (PyGithub)", "Langfuse", "Docker", "Render", "JavaScript", "HTML/CSS", "pytest"],
+    "highlights": [
+      "Built and deployed an agentic Retrieval-Augmented Generation (RAG) system in Python and FastAPI that answers multi-hop questions over live GitHub data (issues, pull requests, commits) by breaking each question into 2–5 sub-questions and orchestrating LLM tool calls.",
+      "Designed a selective long-term memory layer in SQLite that stores only 0–3 durable facts per run, with Jaccard-similarity deduplication and keyword/tag retrieval, so facts recalled across sessions are cited in later answers.",
+      "Implemented end-to-end observability: every run produces a structured Pydantic trace (plan, tool calls, evidence, memory, citations, latency) that is saved as JSON, served through REST endpoints, and optionally sent to Langfuse.",
+      "Built a provider-agnostic LLM layer (OpenAI, OpenRouter, xAI Grok) with bounded timeouts and retries plus a deterministic offline fallback at every LLM call site, so the system keeps working through provider failures and with no API key.",
+      "Containerized the app with a multi-stage, non-root Docker image, deployed it to Render, and covered it with 86 pytest tests, including resilience tests and security tests that keep user-supplied GitHub tokens out of logs and stored traces."
+    ],
+    "links": [
+      { "label": "Live demo", "url": "https://agentic-rag-2dk7.onrender.com" },
+      { "label": "GitHub", "url": "https://github.com/kalyanAVT/Agentic-Rag" }
+    ],
+    "featured": true,
+    "order": 1
+  },
+  {
     "id": "insyfy",
     "title": "InSyfy — Autonomous Research Agent",
+    "category": "AGENTIC AI · RESEARCH",
+    "summary": "A research agent that plans, searches, and synthesizes—with persistent memory and citations that keep every claim grounded.",
     "description": "Designed and built a multi-agent research system on LangGraph: a planner fans out parallel web search, hybrid retrieval (vector + keyword + cross-encoder reranking) pulls from a persistent Qdrant memory, and synthesis is gated by a citation-enforcement layer that declines claims lacking sufficient evidence rather than hallucinating. Added a self-critique retry loop, real-time SSE progress streaming, and independently diagnosed and fixed concurrency and data-integrity bugs (a blocking event loop, broken event-log pagination, invalid vector-DB IDs) that don't surface in a casual demo.",
     "tags": ["LangGraph", "RAG", "FastAPI", "Gradio", "Redis", "Qdrant"],
     "links": [
       { "label": "GitHub", "url": "https://github.com/kalyanAVT/Insyfy" }
     ],
     "featured": true,
-    "order": 1
+    "order": 2
   },
   {
     "id": "sentiment-chatbot",
     "title": "Multimodal Sentiment Chatbot",
+    "category": "NATURAL LANGUAGE · MULTIMODAL AI",
+    "summary": "Voice-enabled conversations with a multi-model router, fine-tuned sentiment detection, and cloud or local inference.",
     "description": "Built a multi-model inference router combining cloud (SageMaker) and local (Phi-2) backends, with dynamic routing based on query complexity. Fine-tuned BERT for sequence classification on 160K labelled tweets; achieved 93% F1-score with voice input/output via STT/TTS.",
     "tags": ["BERT", "GPT-3.5", "Phi-2", "FLAN-T5", "AWS Lambda", "FastAPI"],
     "links": [
       { "label": "GitHub", "url": "https://github.com/kalyanAVT/Multimodal-Sentiment-Chatbot" }
     ],
-    "featured": true,
-    "order": 2
+    "featured": false,
+    "order": 3
   },
   {
     "id": "crop-disease",
     "title": "Crop Disease Detection System",
-    "description": "Achieved 96% test accuracy on a Grape Leaf Disease 4 Class using transfer learning (CNN backbone) with augmentation and fine-tuning of classification head. Deployed model behind a REST API (FastAPI) with a Streamlit dashboard for real-time image upload and inference.",
+    "category": "COMPUTER VISION · APPLIED ML",
+    "summary": "A vision pipeline that identifies grape leaf disease and delivers real-time predictions through an API and dashboard.",
+    "description": "Achieved 93% test accuracy on a Grape Leaf Disease 4 Class using transfer learning (CNN backbone) with augmentation and fine-tuning of classification head. Deployed model behind a REST API (FastAPI) with a Streamlit dashboard for real-time image upload and inference.",
     "tags": ["ResNet", "OpenCV", "CNN", "FastAPI", "Streamlit"],
     "links": [
       { "label": "GitHub", "url": "https://github.com/kalyanAVT/Grape-Leaf-Disease-Detection-Using-Cnn" }
     ],
-    "featured": true,
-    "order": 3
+    "featured": false,
+    "order": 4
   }
 ]

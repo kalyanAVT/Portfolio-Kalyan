@@ -10,37 +10,24 @@ import Footer from "@/components/Footer";
 import { personal } from "@/lib/data";
 import { getProjects } from "@/lib/getProjects";
 
-export const metadata = {
-  title: `${personal.name} — ML & AI Engineer`,
-  description: `Portfolio of ${personal.name}. ML/AI Engineer specializing in agents, RAG, and production ML.`,
-  openGraph: {
-    title: `${personal.name} — ML & AI Engineer`,
-    description: "ML/AI Engineer. Building agents that remember and reason.",
-    images: ["/og-image.png"],
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: `${personal.name} — ML & AI Engineer`,
-    description: `ML/AI Engineer. Building agents that remember and reason.`,
-  },
-};
-
 export default async function Home() {
   const projects = await getProjects();
 
   return (
     <>
       <Navbar name={personal.name} />
-      <main>
+      <main id="main-content" tabIndex={-1}>
         <Hero />
+        <Projects projects={projects} />
         <About />
         <Experience />
         <Skills />
-        <Projects projects={projects} />
-        <Hackathons />
-        <Education />
-        <Footer />
+        <div className="background-grid shell">
+          <Hackathons />
+          <Education />
+        </div>
       </main>
+      <Footer />
     </>
   );
 }

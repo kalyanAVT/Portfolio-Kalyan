@@ -1,41 +1,32 @@
-"use client";
-
-import { motion } from "framer-motion";
-import { personal } from "../lib/data";
+import { ArrowUp, ArrowUpRight, Mail } from "lucide-react";
+import { personal } from "@/lib/data";
 
 export default function Footer() {
   return (
-    <motion.footer
-      id="contact"
-      initial={{ opacity: 0, y: 16 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-60px" }}
-      transition={{ duration: 0.45, ease: "easeOut" }}
-      className="max-w-[700px] mx-auto px-5 py-16 pt-24 border-t border-[var(--border)] text-center"
-    >
-      <h2 className="text-xl font-semibold text-[var(--fg)] mb-6">Let's Connect</h2>
-      <p className="text-sm text-[var(--muted)] mb-8 max-w-sm mx-auto">
-        Feel free to reach out for collaborations, opportunities, or just a quick chat.
-      </p>
-      
-      <div className="flex justify-center gap-6 mb-12">
-        <a href={`mailto:${personal.email}`} className="text-sm font-mono text-[var(--muted)] hover:text-[var(--fg)] transition-colors">
-          Email
-        </a>
-        <a href={personal.linkedin} target="_blank" rel="noopener noreferrer" className="text-sm font-mono text-[var(--muted)] hover:text-[var(--fg)] transition-colors">
-          LinkedIn
-        </a>
-        <a href={personal.github} target="_blank" rel="noopener noreferrer" className="text-sm font-mono text-[var(--muted)] hover:text-[var(--fg)] transition-colors">
-          GitHub
-        </a>
-        <a href={personal.twitter} target="_blank" rel="noopener noreferrer" className="text-sm font-mono text-[var(--muted)] hover:text-[var(--fg)] transition-colors">
-          Twitter
-        </a>
+    <footer id="contact" className="site-footer" data-nav-section aria-labelledby="contact-title">
+      <div className="shell">
+        <div className="contact-panel">
+          <div className="contact-copy">
+            <p className="eyebrow"><span className="status-dot" /> LET'S BUILD WHAT'S NEXT</p>
+            <h2 id="contact-title">Good things start<br />with a <span>conversation.</span></h2>
+            <p>Have an interesting problem, a role in mind, or an idea worth exploring? I&apos;d love to hear about it.</p>
+          </div>
+          <div className="contact-actions">
+            <a className="button button-primary contact-button" href={"mailto:" + personal.email}><Mail size={18} aria-hidden="true" /> Say hello <ArrowUpRight size={18} aria-hidden="true" /></a>
+            <a className="contact-email" href={"mailto:" + personal.email}>{personal.email}</a>
+            <span className="contact-availability"><span className="status-dot" /> {personal.status}</span>
+          </div>
+        </div>
+        <div className="footer-bottom">
+          <p>© {new Date().getFullYear()} {personal.name}<span className="footer-divider">/</span><span>Built with intent.</span></p>
+          <nav aria-label="Social links">
+            <a href={personal.github} target="_blank" rel="noopener noreferrer">GitHub <ArrowUpRight size={13} aria-hidden="true" /></a>
+            <a href={personal.linkedin} target="_blank" rel="noopener noreferrer">LinkedIn <ArrowUpRight size={13} aria-hidden="true" /></a>
+            <a href={personal.twitter} target="_blank" rel="noopener noreferrer">X / Twitter <ArrowUpRight size={13} aria-hidden="true" /></a>
+          </nav>
+          <a className="back-to-top" href="#home" aria-label="Back to top"><ArrowUp size={17} aria-hidden="true" /></a>
+        </div>
       </div>
-      
-      <p className="text-xs text-[var(--muted)] font-mono">
-        © {new Date().getFullYear()} {personal.name}. All rights reserved.
-      </p>
-    </motion.footer>
+    </footer>
   );
 }

@@ -5,6 +5,9 @@ node_modules/
 .next/
 out/
 
+# Local browser previews
+tmp/ui-preview/
+
 # Environment variables
 .env
 .env.local
@@ -38,3 +41,6 @@ PORTFOLIO_PLAN.md
 TODO.md
 plan.md
 *.pdf
+
+#chat session
+codex-sessio-UI-update1.md

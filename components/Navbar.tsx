@@ -1,64 +1,69 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
+import { ArrowUpRight, Menu, X } from "lucide-react";
 import { useActiveSection } from "@/hooks/useActiveSection";
-import { Home, Briefcase, Code, FolderGit2, Mail, Menu, X } from "lucide-react";
 import ThemeToggle from "./ThemeToggle";
 
 const LINKS = [
-  { label: "Home",       href: "#",           icon: Home },
-  { label: "Experience", href: "#experience", icon: Briefcase },
-  { label: "Skills",     href: "#skills",     icon: Code },
-  { label: "Projects",   href: "#projects",   icon: FolderGit2 },
-  { label: "Contact",    href: "#contact",    icon: Mail },
+  { label: "Work", href: "#projects" },
+  { label: "About", href: "#about" },
+  { label: "Experience", href: "#experience" },
+  { label: "Toolkit", href: "#skills" },
 ];
 
 export default function Navbar({ name }: { name: string }) {
   const active = useActiveSection();
   const [isOpen, setIsOpen] = useState(false);
+  const headerRef = useRef<HTMLElement>(null);
+  const menuRef = useRef<HTMLButtonElement>(null);
+
+  useEffect(() => {
+    if (!isOpen) return;
+    headerRef.current?.querySelector<HTMLAnchorElement>("#primary-navigation a")?.focus();
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        setIsOpen(false);
+        menuRef.current?.focus();
+      }
+    };
+    const onPointerDown = (event: PointerEvent) => {
+      if (!headerRef.current?.contains(event.target as Node)) setIsOpen(false);
+    };
+    const onResize = () => {
+      if (window.innerWidth >= 768) setIsOpen(false);
+    };
+    document.addEventListener("keydown", onKeyDown);
+    document.addEventListener("pointerdown", onPointerDown);
+    window.addEventListener("resize", onResize);
+    return () => {
+      document.removeEventListener("keydown", onKeyDown);
+      document.removeEventListener("pointerdown", onPointerDown);
+      window.removeEventListener("resize", onResize);
+    };
+  }, [isOpen]);
 
   return (
-    <>
-      {/* Mobile Navigation Toggle (Bottom Right) */}
-      <div className="fixed bottom-6 right-6 z-50 sm:hidden">
-        <button 
-          onClick={() => setIsOpen(!isOpen)}
-          className="w-12 h-12 flex items-center justify-center rounded-full bg-[var(--card-bg)] border border-[var(--border)] shadow-lg text-[var(--fg)] hover:bg-[var(--border)] transition-colors"
-        >
-          {isOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
-        </button>
-      </div>
-
-      {/* Floating Bottom Navigation Pill */}
-      <header className={`fixed bottom-6 inset-x-0 z-40 flex justify-center transition-transform duration-300 ${isOpen ? "translate-y-0" : "translate-y-24 sm:translate-y-0"}`}>
-        <nav className="flex items-center gap-1 sm:gap-2 px-2 py-2 rounded-full bg-neutral-900/80 dark:bg-white/10 backdrop-blur-md border border-white/10 shadow-xl">
-          {LINKS.map(({ label, href, icon: Icon }) => {
-            const isActive = active === href.slice(1) || (href === "#" && !active);
-            return (
-              <a 
-                key={href} 
-                href={href}
-                className={`relative flex items-center justify-center w-10 h-10 sm:w-12 sm:h-12 rounded-full transition-all duration-300 group
-                  ${isActive ? "bg-white/10" : "hover:bg-white/5"}`}
-                title={label}
-              >
-                <Icon className={`w-5 h-5 ${isActive ? "text-white" : "text-neutral-400 group-hover:text-white"}`} />
-                
-                {/* Tooltip */}
-                <span className="absolute -top-10 px-2 py-1 bg-neutral-900 text-white text-xs rounded opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none whitespace-nowrap border border-white/10">
-                  {label}
-                </span>
-              </a>
-            );
-          })}
-          
-          <div className="w-px h-8 bg-white/20 mx-1"></div>
-          
-          <div className="w-10 h-10 sm:w-12 sm:h-12 flex items-center justify-center">
-            <ThemeToggle />
-          </div>
+    <header className="site-header" ref={headerRef}>
+      <div className="header-inner shell">
+        <a className="wordmark" href="#home" aria-label={name + " — back to top"} onClick={() => setIsOpen(false)}>
+          <span className="brand-mark" aria-hidden="true">k<span>.</span></span>
+          <span>{name}<span className="wordmark-dot">.</span></span>
+        </a>
+        <nav id="primary-navigation" aria-label="Main navigation" className={"primary-nav" + (isOpen ? " is-open" : "")}>
+          {LINKS.map(({ label, href }) => (
+            <a key={href} href={href} aria-current={active === href.slice(1) ? "location" : undefined} onClick={() => setIsOpen(false)}>{label}</a>
+          ))}
+          <a href="#contact" className="mobile-contact" aria-current={active === "contact" ? "location" : undefined} onClick={() => setIsOpen(false)}>Let&apos;s talk <ArrowUpRight size={16} aria-hidden="true" /></a>
         </nav>
-      </header>
-    </>
+        <div className="header-actions">
+          <ThemeToggle />
+          <a href="#contact" className="header-contact" aria-current={active === "contact" ? "location" : undefined}>Let&apos;s talk <ArrowUpRight size={15} aria-hidden="true" /></a>
+          <button type="button" ref={menuRef} className="icon-button menu-toggle" aria-label={isOpen ? "Close navigation" : "Open navigation"} aria-expanded={isOpen} aria-controls="primary-navigation" onClick={() => setIsOpen(!isOpen)}>
+            {isOpen ? <X size={21} aria-hidden="true" /> : <Menu size={21} aria-hidden="true" />}
+          </button>
+        </div>
+      </div>
+    </header>
   );
 }

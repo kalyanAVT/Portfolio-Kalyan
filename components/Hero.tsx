@@ -1,49 +1,39 @@
-"use client";
-
-import { motion } from "framer-motion";
 import Image from "next/image";
-import { personal } from "../lib/data";
-import { Mail } from "lucide-react";
+import { ArrowDown, ArrowUpRight, Code2, Terminal } from "lucide-react";
+import { personal } from "@/lib/data";
+import SystemIllustration from "./SystemIllustration";
 
 export default function Hero() {
   return (
-    <section className="max-w-[700px] mx-auto px-5 pt-28 pb-16">
-      <motion.div
-        initial={{ opacity: 0, y: 12 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5 }}
-        className="flex flex-col-reverse md:flex-row justify-between items-start md:items-center gap-8"
-      >
-        <div className="flex-1 space-y-4">
-          <h1 className="text-4xl md:text-5xl font-bold tracking-tight text-[var(--fg)]">
-            Hi, I&apos;m {personal.firstName}
-          </h1>
-          <p className="text-base md:text-lg text-[var(--muted)] leading-relaxed max-w-lg">
-            {personal.tagline}
+    <section id="home" className="hero shell" data-nav-section aria-labelledby="hero-title">
+      <div className="hero-topline">
+        <p className="eyebrow"><Terminal size={14} aria-hidden="true" /> AI / ML ENGINEER</p>
+        <span className="status-badge"><span className="status-dot" />{personal.status}</span>
+      </div>
+      <div className="hero-grid">
+        <div className="hero-copy">
+          <div className="hero-intro">
+            <Image src="/profile.png" alt={personal.name} width={44} height={44} priority />
+            <span>Hey, I&apos;m <strong>{personal.firstName}.</strong></span>
+          </div>
+          <h1 id="hero-title">Intelligence,<br /><span>engineered.</span></h1>
+          <p className="hero-description">
+            I build AI that holds up beyond the demo. From agents that reason to models that learn—turning complex ideas into systems that work.
           </p>
-          <div className="pt-2">
-            <a 
-              href={`mailto:${personal.email}`}
-              className="inline-flex items-center gap-2 text-sm font-medium text-[var(--fg)] bg-[var(--card-bg)] hover:bg-[var(--border)] border border-[var(--border)] px-4 py-2 rounded-full transition-colors"
-            >
-              <Mail className="w-4 h-4" />
-              {personal.email}
+          <div className="hero-actions">
+            <a href="#projects" className="button button-primary">Explore my work <ArrowDown size={17} aria-hidden="true" /></a>
+            <a href={personal.github} className="button button-secondary" target="_blank" rel="noopener noreferrer">
+              <Code2 size={17} aria-hidden="true" /> GitHub <ArrowUpRight size={15} aria-hidden="true" />
             </a>
           </div>
         </div>
-        
-        {/* Profile Picture */}
-        <div className="w-32 h-32 md:w-40 md:h-40 rounded-2xl overflow-hidden border-2 border-[var(--border)] shrink-0 shadow-xl">
-          <Image
-            src="/profile.png"
-            alt={personal.name}
-            width={160}
-            height={160}
-            priority
-            className="w-full h-full object-cover"
-          />
-        </div>
-      </motion.div>
+        <SystemIllustration />
+      </div>
+      <div className="hero-bottomline">
+        <span className="mono-label">RESEARCH MEETS REAL-WORLD IMPACT</span>
+        <ul aria-label="Areas of focus"><li>LLMs & agents</li><li>Machine learning</li><li>Production AI</li></ul>
+        <a href="#projects" className="scroll-cue" aria-label="Scroll to selected work"><ArrowDown size={18} aria-hidden="true" /></a>
+      </div>
     </section>
   );
 }

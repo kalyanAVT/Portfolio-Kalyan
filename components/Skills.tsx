@@ -1,35 +1,30 @@
-"use client";
+import { Braces, BrainCircuit, Database, Workflow } from "lucide-react";
+import { skills } from "@/lib/data";
+import SectionHeading from "./SectionHeading";
 
-import { motion } from "framer-motion";
-import { skills } from "../lib/data";
+const GROUPS = [
+  { title: "Models & learning", icon: BrainCircuit, description: "Train, fine-tune, evaluate.", names: ["Python", "PyTorch", "Scikit-learn", "HuggingFace Transformers", "LoRA", "QLoRA"] },
+  { title: "LLMs & agents", icon: Workflow, description: "Give intelligence a workflow.", names: ["Large Language Models (LLMs)", "AI Agents", "Agentic Workflows", "LLM Tool Calling", "Prompt Engineering", "LangChain", "LangGraph", "Multi-Agent Systems", "Retrieval-Augmented Generation (RAG)", "Vector Databases (Qdrant)", "LLM Observability"] },
+  { title: "Engineering & deployment", icon: Braces, description: "Get it into the real world.", names: ["AWS", "Docker", "GitHub Actions", "Weights & Biases", "FastAPI", "Pydantic", "Async Python", "Server-Sent Events", "Streamlit", "REST APIs", "CI-ready Testing (pytest)"] },
+  { title: "Data & storage", icon: Database, description: "Build on solid foundations.", names: ["Pandas", "NumPy", "MySQL", "SQLite", "Redis"] },
+];
 
 export default function Skills() {
-  if (!skills || skills.length === 0) return null;
-
+  if (!skills.length) return null;
+  const known = new Set(GROUPS.flatMap((group) => group.names));
+  const additionalSkills = skills.filter((skill) => !known.has(skill));
   return (
-    <motion.section
-      id="skills"
-      initial={{ opacity: 0, y: 16 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-60px" }}
-      transition={{ duration: 0.45, ease: "easeOut" }}
-      className="max-w-[700px] mx-auto px-5 py-16"
-    >
-      <div className="text-center mb-10">
-        <div className="inline-flex items-center px-3 py-1 rounded-full bg-[var(--card-bg)] border border-[var(--border)] text-xs font-medium text-[var(--fg)] mb-4">
-          Capabilities
-        </div>
-        <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-[var(--fg)]">
-          My Skills
-        </h2>
-      </div>
-      <div className="flex flex-wrap justify-center gap-3 max-w-2xl mx-auto">
-        {skills.map((skill) => (
-          <span key={skill} className="inline-flex items-center px-4 py-2 rounded-full text-sm font-medium bg-[var(--card-bg)] text-[var(--fg)] border border-[var(--border)] shadow-sm hover:shadow-md hover:border-[var(--muted)] hover:-translate-y-0.5 transition-all cursor-default">
-            {skill}
-          </span>
+    <section id="skills" className="section shell" data-nav-section aria-labelledby="skills-title">
+      <SectionHeading index="04" label="THE TOOLKIT" title="The right tools. Real outcomes." description="A practical stack for taking AI from the first experiment to production." id="skills-title" />
+      <div className="skills-grid">
+        {GROUPS.map(({ title, icon: Icon, description, names }) => (
+          <div className="skill-group" key={title}>
+            <div className="skill-heading"><span className="skill-icon"><Icon size={20} strokeWidth={1.5} aria-hidden="true" /></span><div><h3>{title}</h3><p>{description}</p></div></div>
+            <ul className="tag-list">{names.filter((name) => skills.includes(name)).map((skill) => <li key={skill}>{skill}</li>)}</ul>
+          </div>
         ))}
+        {additionalSkills.length > 0 && <div className="skill-group"><h3>Also in my toolkit</h3><ul className="tag-list">{additionalSkills.map((skill) => <li key={skill}>{skill}</li>)}</ul></div>}
       </div>
-    </motion.section>
+    </section>
   );
 }

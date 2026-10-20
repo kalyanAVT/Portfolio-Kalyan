@@ -6,39 +6,33 @@ import "./globals.css";
 export const metadata: Metadata = {
   metadataBase: new URL(
     process.env.VERCEL_PROJECT_PRODUCTION_URL
-      ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}`
-      : "http://localhost:3000"
+      ? "https://" + process.env.VERCEL_PROJECT_PRODUCTION_URL
+      : "https://kalyan-avt.vercel.app"
   ),
-  title       : "Kalyan Kumar A",
-  description : "Portfolio of Kalyan A. ML/AI Engineer specialising in LLMs, MLOps, NLP, and Computer Vision.",
-  openGraph   : {
-    title       : "Kalyan Kumar A",
-    description : "ML/AI Engineer. Building production AI systems.",
-    images      : ["/profile.png"],
+  title: "Kalyan A — AI & ML Engineer",
+  description: "AI/ML engineer building agents, retrieval systems, and production machine learning. Explore Kalyan's projects, experience, and approach to engineering AI.",
+  openGraph: {
+    title: "Kalyan A — AI & ML Engineer",
+    description: "Intelligence, engineered. Building AI that holds up beyond the demo.",
+    images: [{ url: "/profile.png", width: 1024, height: 1024, alt: "Kalyan A" }],
+  },
+  twitter: {
+    card: "summary",
+    title: "Kalyan A — AI & ML Engineer",
+    description: "Intelligence, engineered. Building AI that holds up beyond the demo.",
+    images: ["/profile.png"],
   },
 };
 
-// Prevent flash of wrong theme on load
-const themeScript = `
-  (function() {
-    var saved = localStorage.getItem('theme');
-    var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-    document.documentElement.setAttribute('data-theme', saved || (prefersDark ? 'dark' : 'light'));
-  })()
-`;
+// Apply the saved preference before first paint. New visitors see the dark design.
+const themeScript = "(function(){var theme='dark';try{var saved=localStorage.getItem('theme');if(saved==='light'||saved==='dark')theme=saved;}catch(e){}document.documentElement.setAttribute('data-theme',theme);})()";
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" suppressHydrationWarning className={`${GeistSans.variable} ${GeistMono.variable}`}>
-      <head>
-        <script dangerouslySetInnerHTML={{ __html: themeScript }} />
-      </head>
-      <body className="bg-[var(--bg)] text-[var(--fg)] font-sans transition-colors duration-200 min-h-screen">
-        {/* Ambient Glow Background */}
-        <div className="fixed inset-0 z-[-1] flex items-center justify-center pointer-events-none overflow-hidden">
-          <div className="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] rounded-full bg-blue-500/10 dark:bg-blue-500/5 blur-[120px]" />
-          <div className="absolute bottom-[-10%] right-[-10%] w-[40%] h-[40%] rounded-full bg-purple-500/10 dark:bg-purple-500/5 blur-[120px]" />
-        </div>
+    <html lang="en" data-theme="dark" suppressHydrationWarning className={GeistSans.variable + " " + GeistMono.variable}>
+      <head><script dangerouslySetInnerHTML={{ __html: themeScript }} /></head>
+      <body>
+        <a className="skip-link" href="#main-content">Skip to content</a>
         {children}
       </body>
     </html>

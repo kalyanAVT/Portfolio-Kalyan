@@ -1,33 +1,38 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
+import { Moon, Sun } from "lucide-react";
 
 export default function ThemeToggle() {
-  const [theme, setTheme] = useState("");
+  const [theme, setTheme] = useState("dark");
 
   useEffect(() => {
-    const saved = localStorage.getItem("theme");
-    const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
-    setTheme(saved || (prefersDark ? "dark" : "light"));
+    setTheme(document.documentElement.dataset.theme === "light" ? "light" : "dark");
+    const onStorage = (event: StorageEvent) => {
+      if (event.key !== "theme" && event.key !== null) return;
+      const nextTheme = event.newValue === "light" ? "light" : "dark";
+      document.documentElement.dataset.theme = nextTheme;
+      setTheme(nextTheme);
+    };
+    window.addEventListener("storage", onStorage);
+    return () => window.removeEventListener("storage", onStorage);
   }, []);
 
   const toggleTheme = () => {
-    const newTheme = theme === "dark" ? "light" : "dark";
-    setTheme(newTheme);
-    localStorage.setItem("theme", newTheme);
-    document.documentElement.setAttribute("data-theme", newTheme);
+    const nextTheme = document.documentElement.dataset.theme === "dark" ? "light" : "dark";
+    document.documentElement.dataset.theme = nextTheme;
+    setTheme(nextTheme);
+    try {
+      localStorage.setItem("theme", nextTheme);
+    } catch {
+      // The toggle still works when browser storage is unavailable.
+    }
   };
 
   return (
-    <button
-      onClick={toggleTheme}
-      className="p-2 rounded-lg transition-colors duration-200 hover:bg-[var(--tag-bg)]"
-    >
-      {theme === "dark" ? (
-        <span className="text-[var(--fg)]">☀</span>
-      ) : (
-        <span className="text-[var(--fg)]">🌙</span>
-      )}
+    <button type="button" onClick={toggleTheme} className="icon-button theme-toggle" aria-label={theme === "dark" ? "Switch to light theme" : "Switch to dark theme"} title={theme === "dark" ? "Switch to light theme" : "Switch to dark theme"}>
+      <Sun className="theme-sun" size={18} aria-hidden="true" />
+      <Moon className="theme-moon" size={18} aria-hidden="true" />
     </button>
   );
 }

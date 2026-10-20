@@ -18,24 +18,25 @@ export const experiences = [
   {
     company: "Viswam AI | Applied AI Team",
     url: "#",
-    role: "Machine Learning Intern (AI Developer)",
+    role: "AI Developer Intern (Machine Learning)",
     period: "May 2025 – Sept 2025",
     bullets: [
       "Sourced and preprocessed 100K+ Indic-language text samples; applied data augmentation and deduplication, raising downstream benchmark accuracy by 15%.",
       "Designed modular PyTorch training pipelines with reusable data loaders and cross-validation, improving experiment reproducibility across the team.",
       "Applied LoRA & QLoRA (HuggingFace PEFT) to fine-tune GPT-style decoder models collaboratively with a 5-member team, reducing GPU training time by 20%.",
-      "Packaged and deployed model checkpoints to AWS SageMaker endpoints; logged metrics, hyperparameters, and artefacts in Weights & Biases for full experiment traceability."
+      "Collaborated with senior engineers in 2-week Agile sprints to develop and optimize ML pipelines, evaluate model performance, and iterate on customer-facing features."
     ],
   },
 ];
 
 export const skills = [
   "Python", "PyTorch", "Scikit-learn", "HuggingFace Transformers",
-  "LoRA", "QLoRA", "Prompt Engineering",
-  "LangChain", "LangGraph", "Multi-Agent Systems", "Retrieval-Augmented Generation (RAG)",
+  "LoRA", "QLoRA", "Prompt Engineering", "Large Language Models (LLMs)",
+  "LangChain", "LangGraph", "AI Agents", "Agentic Workflows", "Multi-Agent Systems",
+  "LLM Tool Calling", "Retrieval-Augmented Generation (RAG)", "LLM Observability",
   "Vector Databases (Qdrant)", "AWS", "Docker", "GitHub Actions", "Weights & Biases",
-  "FastAPI", "Async Python", "Server-Sent Events", "Streamlit", "REST APIs",
-  "Pandas", "NumPy", "MySQL", "Redis"
+  "FastAPI", "Pydantic", "Async Python", "Server-Sent Events", "Streamlit", "REST APIs", "CI-ready Testing (pytest)",
+  "Pandas", "NumPy", "MySQL", "SQLite", "Redis"
 ];
 
 export const hackathons = [
